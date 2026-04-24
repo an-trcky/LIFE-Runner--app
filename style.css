@@ -1,8 +1,9 @@
 body{
-  font-family:Arial;
-  background:#eef2ff;
   margin:0;
   padding:20px;
+  font-family:Arial;
+  background:#eef2ff;
+  text-align:center;
 }
 
 /* タイトル */
@@ -33,8 +34,8 @@ body{
 }
 
 .summaryItem{
-  text-align:center;
   flex:1;
+  text-align:center;
 }
 
 .summaryItem span{
@@ -69,7 +70,6 @@ body{
   transition:0.15s;
 }
 
-/* 押した感 */
 .menuBtn:active{
   transform:scale(0.95);
   opacity:0.8;
