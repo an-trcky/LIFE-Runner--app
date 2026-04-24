@@ -1,16 +1,16 @@
-console.log("JS OK")
+document.getElementById("startBtn").addEventListener("click",()=>{
 
-window.addEventListener("DOMContentLoaded", () => {
+  const age = document.getElementById("age").value
+  const savings = document.getElementById("savings").value
+  const income = document.getElementById("income").value
+  const expenses = document.getElementById("expenses").value
 
-  const startBtn = document.getElementById("startBtn")
-
-  if(!startBtn){
-    console.log("ボタン取得失敗")
+  if(!age || !savings || !income || !expenses){
+    alert("全部入力して")
     return
   }
 
-  startBtn.addEventListener("click", () => {
-    alert("診断画面へ（次で実装）")
-  })
+  // 仮処理（あとでシミュレーションに繋ぐ）
+  alert("診断スタート！（ここからシミュレーションへ）")
 
 })
