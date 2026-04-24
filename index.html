@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LIFE Runner</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div id="screen-home">
+  <h1>LIFE Runner</h1>
+  <button onclick="showScreen('input')">スタート</button>
+</div>
+
+<div id="screen-input" style="display:none;">
+  <h2>入力</h2>
+  <button onclick="showScreen('result')">診断</button>
+</div>
+
+<div id="screen-result" style="display:none;">
+  <h2>結果</h2>
+  <button onclick="showScreen('home')">戻る</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
