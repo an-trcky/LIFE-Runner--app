@@ -5,6 +5,10 @@ document.getElementById("startBtn").addEventListener("click",()=>{
   const income = Number(document.getElementById("income").value)
   const expenses = Number(document.getElementById("expenses").value)
 
-  console.log(age, savings, income, expenses)
+  let yearly = (income - expenses) * 12
+  let future = savings + yearly * 10
+  
+  document.getElementById("resultBox").innerHTML =
+    "10年後資産：" + future + "万円"
 
 })
