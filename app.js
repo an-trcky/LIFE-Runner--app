@@ -5,3 +5,6 @@ function showScreen(name){
 
   document.getElementById("screen-" + name).style.display = "block"
 }
+　document.getElementById("startBtn").addEventListener("click",()=>{
+  alert("ここから診断画面へ（次で作る）")
+})
