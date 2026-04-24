@@ -1,2 +1,62 @@
-<button onclick="alert('押せてる')">テスト</button>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LIFE Runner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- ロゴエリア -->
+  <div class="logoArea">
+    <img src="logo.png" class="logo">
+    <h1>LIFE Runner</h1>
+    <p>人生の資産を見える化</p>
+  </div>
+
+  <!-- 入力カード -->
+  <div class="card">
+
+    <div class="inputRow">
+      <label>年齢</label>
+      <input type="number" id="age" placeholder="例：32">
+    </div>
+
+    <div class="inputRow">
+      <label>貯金（万円）</label>
+      <input type="number" id="savings" placeholder="例：300">
+    </div>
+
+    <div class="inputRow">
+      <label>月収（万円）</label>
+      <input type="number" id="income" placeholder="例：30">
+    </div>
+
+    <div class="inputRow">
+      <label>生活費（万円）</label>
+      <input type="number" id="expenses" placeholder="例：20">
+    </div>
+
+  </div>
+
+  <!-- 機能ボタン -->
+  <div class="gridMenu">
+
+    <button class="menuBtn">🏠 住宅ローン</button>
+    <button class="menuBtn">📈 投資</button>
+    <button class="menuBtn">👨‍👩‍👧 家族</button>
+    <button class="menuBtn">📅 イベント</button>
+
+  </div>
+
+  <!-- スタート -->
+  <button id="startBtn">診断スタート →</button>
+
+</div>
+
 <script src="app.js"></script>
+</body>
+</html>
