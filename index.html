@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>LIFE Runner</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<div id="homeScreen">
 
-<body>
+  <h1 class="appTitle">LIFE Runner</h1>
+  <p class="subTitle">人生の資産を最適化</p>
 
-<div id="screen-home">
-  <h1>LIFE Runner</h1>
-  <button onclick="showScreen('input')">スタート</button>
+  <div class="card summaryCard">
+    <div class="summaryItem">
+      <span>年齢</span>
+      <b id="ageDisplay">35歳</b>
+    </div>
+    <div class="summaryItem">
+      <span>貯金</span>
+      <b id="savingsDisplay">100万</b>
+    </div>
+    <div class="summaryItem">
+      <span>生活費</span>
+      <b id="expenseDisplay">30万</b>
+    </div>
+  </div>
+
+  <div class="gridMenu">
+    <div class="menuBtn">🏠 住宅ローン</div>
+    <div class="menuBtn">📈 投資</div>
+    <div class="menuBtn">👨‍👩‍👧 家族</div>
+    <div class="menuBtn">📅 イベント</div>
+  </div>
+
+  <button id="startBtn">診断スタート →</button>
+
 </div>
-
-<div id="screen-input" style="display:none;">
-  <h2>入力</h2>
-  <button onclick="showScreen('result')">診断</button>
-</div>
-
-<div id="screen-result" style="display:none;">
-  <h2>結果</h2>
-  <button onclick="showScreen('home')">戻る</button>
-</div>
-
-<script src="app.js"></script>
-</body>
-</html>
