@@ -1,64 +1,318 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>LIFE Runner</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
+</head>
 <body>
 
-<div class="app">
+<!-- INPUT PAGE -->
 
-  <!-- ロゴエリア -->
-  <div class="logoArea">
-    <img src="logo.png" class="logo">
-    <h1>LIFE Runner</h1>
-    <p>人生の資産を見える化</p>
+<div class="page active" id="page-input">
+  <div class="splash">
+    <div class="splash-b1"></div>
+    <div class="splash-b2"></div>
+    <div class="logo-row">
+      <div class="logo-icon">&#127939;</div>
+      <div class="logo-text">
+        <h1>LIFE Runner</h1>
+        <p>人生の資産を最適化<br>安心を見える化する</p>
+      </div>
+    </div>
+    <div class="splash-tag">&#10024; 3分で診断スタート</div>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 480 32" preserveAspectRatio="none" height="32" width="100%">
+      <path d="M0,0 C120,32 360,0 480,22 L480,0 Z" fill="#f2f7fc"/>
+    </svg>
   </div>
 
-  <!-- 入力カード -->
-  <div class="card">
+  <div class="wrap">
 
-    <div class="inputRow">
-      <label>年齢</label>
-      <input type="number" id="age" placeholder="例：32">
+```
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--purple-s)">&#128100;</div>
+  <div><h2>基本情報</h2><div class="sec-sub">現在の年齢とローン開始年齢</div></div>
+</div>
+<div class="card">
+  <div class="row2">
+    <div class="field">
+      <label>現在の年齢</label>
+      <div class="input-wrap"><input type="number" id="startAge" value="35" inputmode="decimal"><span class="input-unit">歳</span></div>
     </div>
+    <div class="field">
+      <label>ローン開始年齢</label>
+      <div class="input-wrap"><input type="number" id="loanStartAge" value="30" inputmode="decimal"><span class="input-unit">歳</span></div>
+    </div>
+  </div>
+</div>
 
-    <div class="inputRow">
-      <label>貯金（万円）</label>
-      <input type="number" id="savings" placeholder="例：300">
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--teal-s)">&#128176;</div>
+  <div><h2>収入</h2><div class="sec-sub">税引き後の手取り金額を入力</div></div>
+</div>
+<div class="card">
+  <div class="row2" style="margin-bottom:10px">
+    <div class="field">
+      <label>月手取り <span class="sub">税引き後</span></label>
+      <div class="input-wrap"><input type="number" id="income" value="50" inputmode="decimal"><span class="input-unit">万円</span></div>
     </div>
+    <div class="field">
+      <label>現在の貯蓄</label>
+      <div class="input-wrap"><input type="number" id="savings" value="100" inputmode="decimal"><span class="input-unit">万円</span></div>
+    </div>
+  </div>
+  <div class="row2" style="margin-bottom:10px">
+    <div class="field">
+      <label>ボーナス回数</label>
+      <div class="input-wrap"><input type="number" id="bonusTimes" value="2" inputmode="decimal"><span class="input-unit">回/年</span></div>
+    </div>
+    <div class="field">
+      <label>ボーナス手取り <span class="sub">1回分</span></label>
+      <div class="input-wrap"><input type="number" id="bonusAmount" value="50" inputmode="decimal"><span class="input-unit">万円</span></div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>防衛資金 <span class="sub">常時キープ</span></label>
+      <div class="input-wrap"><input type="number" id="emergencyTarget" value="180" inputmode="decimal"><span class="input-unit">万円</span></div>
+    </div>
+    <div class="field"></div>
+  </div>
+</div>
 
-    <div class="inputRow">
-      <label>月収（万円）</label>
-      <input type="number" id="income" placeholder="例：30">
-    </div>
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--orange-s)">&#128722;</div>
+  <div><h2>支出</h2><div class="sec-sub">毎月の生活費合計</div></div>
+</div>
+<div class="card">
+  <div class="field">
+    <label>月の生活費合計 <span class="sub">食費・光熱費など</span></label>
+    <div class="input-wrap"><input type="number" id="expenses" value="30" inputmode="decimal"><span class="input-unit">万円</span></div>
+  </div>
+  <div class="hint">住居費はローン設定に含めます。食費・光熱費・通信費・保険料など毎月かかる費用の合計を入力してください。</div>
+</div>
 
-    <div class="inputRow">
-      <label>生活費（万円）</label>
-      <input type="number" id="expenses" placeholder="例：20">
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--green-s)">&#128200;</div>
+  <div><h2>投資</h2><div class="sec-sub">NISAや積立投資など</div></div>
+</div>
+<div class="card">
+  <div class="row2">
+    <div class="field">
+      <label>毎月の投資額</label>
+      <div class="input-wrap"><input type="number" id="investment" value="5" inputmode="decimal"><span class="input-unit">万円</span></div>
     </div>
+    <div class="field">
+      <label>想定利回り <span class="sub">年率</span></label>
+      <div class="input-wrap"><input type="number" id="investmentReturn" value="5" inputmode="decimal"><span class="input-unit">%</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--blue-s)">&#127968;</div>
+  <div><h2>住宅ローン</h2><div class="sec-sub">ない場合はスキップOK</div></div>
+</div>
+<div class="card">
+  <button class="tog-btn tb-blue" onclick="tog('loanBody',this)">
+    <span class="tl">&#127968; ローンを設定する</span>
+    <i class="tog-arr">&#9660;</i>
+  </button>
+  <div class="tog-body" id="loanBody">
+    <div class="row2" style="margin-top:12px;margin-bottom:10px">
+      <div class="field">
+        <label>借入額</label>
+        <div class="input-wrap"><input type="number" id="loanAmount" value="3200" inputmode="decimal"><span class="input-unit">万円</span></div>
+      </div>
+      <div class="field">
+        <label>金利</label>
+        <div class="input-wrap"><input type="number" id="interestRate" value="0.95" step="0.01" inputmode="decimal"><span class="input-unit">%</span></div>
+      </div>
+    </div>
+    <div class="row2" style="margin-bottom:10px">
+      <div class="field">
+        <label>計算方式</label>
+        <select id="repaymentType">
+          <option value="equal">元利均等（毎月同額）</option>
+          <option value="principal">元金均等（最初が高め）</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>繰上げ後の扱い</label>
+        <select id="recalcOption">
+          <option value="no">期間短縮</option>
+          <option value="reduce">月額を減らす</option>
+        </select>
+      </div>
+    </div>
+    <div class="row2" style="margin-bottom:10px">
+      <div class="field">
+        <label>返済期間</label>
+        <div class="input-wrap"><input type="number" id="loanYears" value="35" inputmode="decimal"><span class="input-unit">年</span></div>
+      </div>
+      <div class="field">
+        <label>ボーナス返済 <span class="sub">1回あたり</span></label>
+        <div class="input-wrap"><input type="number" id="bonusRepay" value="0" inputmode="decimal"><span class="input-unit">万円</span></div>
+      </div>
+    </div>
+    <button class="tog-btn tb-yellow" onclick="tog('rateBody',this)" style="margin-bottom:6px">
+      <span class="tl">&#128202; 途中で金利が変わる予定がある</span>
+      <i class="tog-arr">&#9660;</i>
+    </button>
+    <div class="tog-body" id="rateBody">
+      <div id="rateContainer"></div>
+      <button class="add-btn" onclick="addRate()">＋ 金利変動を追加</button>
+    </div>
+    <button class="tog-btn tb-green" onclick="tog('prepayBody',this)" style="margin-top:4px">
+      <span class="tl">&#128168; 繰上げ返済の予定がある</span>
+      <i class="tog-arr">&#9660;</i>
+    </button>
+    <div class="tog-body" id="prepayBody">
+      <div id="prepayContainer"></div>
+      <button class="add-btn" onclick="addPrepay()">＋ 繰上げ返済を追加</button>
+    </div>
+  </div>
+</div>
+
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--yellow-s)">&#127881;</div>
+  <div><h2>ライフイベント</h2><div class="sec-sub">収入・支出が変わる予定を登録</div></div>
+</div>
+<div class="card">
+  <button class="tog-btn tb-orange" onclick="tog('eventBody',this)">
+    <span class="tl">&#127881; イベントを追加する</span>
+    <i class="tog-arr">&#9660;</i>
+  </button>
+  <div class="tog-body" id="eventBody">
+    <div class="hint" style="margin-bottom:10px">例：子ども誕生で支出+5万、転職で収入が45万に変わる、車購入で300万の一時支出</div>
+    <div id="eventList"></div>
+    <button class="add-btn" onclick="addEvent()" style="border-color:var(--orange);color:#903010">＋ イベントを追加</button>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--light);font-size:12px;margin-bottom:4px">
+  ※ 初期設定のままでもシミュレーションできます
+</p>
+```
 
   </div>
 
-  <!-- 機能ボタン -->
-  <div class="gridMenu">
+  <div class="start-wrap">
+    <button id="runBtn">診断スタート →</button>
+    <p class="run-note">※ 入力内容はブラウザに保存されません</p>
+  </div>
+</div>
 
-    <button class="menuBtn">🏠 住宅ローン</button>
-    <button class="menuBtn">📈 投資</button>
-    <button class="menuBtn">👨‍👩‍👧 家族</button>
-    <button class="menuBtn">📅 イベント</button>
+<!-- RESULT PAGE -->
 
+<div class="page" id="page-result">
+  <div class="result-splash">
+    <button class="back-btn" onclick="goBack()">← 入力に戻る</button>
+    <h2>&#128202; 診断結果</h2>
+    <p id="result-sub"></p>
+  </div>
+  <div class="wave" style="background:linear-gradient(135deg,#0ea898,#3b9edd,#7c6cf0)">
+    <svg viewBox="0 0 480 32" preserveAspectRatio="none" height="32" width="100%">
+      <path d="M0,0 C120,32 360,0 480,22 L480,0 Z" fill="#f2f7fc"/>
+    </svg>
   </div>
 
-  <!-- スタート -->
-  <button id="startBtn">診断スタート →</button>
-　<div id="resultBox" class="card"></div>
+  <div class="wrap" style="padding-top:4px">
+    <div class="today-card" id="todayCard"></div>
+    <div class="kpi-grid" id="kpiGrid"></div>
+    <div class="comment-card" id="commentCard"></div>
+
+```
+<div class="chart-card">
+  <div class="chart-top"><div class="chart-title">&#128200; 資産推移グラフ</div></div>
+  <canvas id="assetChart" height="220"></canvas>
+</div>
+
+<!-- 年別テーブル -->
+<div class="table-card">
+  <div class="table-head">
+    <span class="th-title">&#128203; 年別詳細</span>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span id="tableRange" style="font-size:11px;color:var(--light);font-weight:500"></span>
+      <button id="monthlyToggleBtn" onclick="toggleMonthly()" style="background:var(--teal-s);border:1.5px solid var(--teal);color:var(--teal-d);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif">&#128197; 月次</button>
+    </div>
+  </div>
+  <div class="table-scroll" id="tableContainer"></div>
+</div>
+
+<!-- 月次テーブル -->
+<div class="table-card" id="monthlyCard" style="display:none">
+  <div class="table-head">
+    <span class="th-title">&#128197; 月次詳細</span>
+    <span id="monthlyRange" style="font-size:11px;color:var(--light);font-weight:500"></span>
+  </div>
+  <div class="month-year-btns" id="monthlyYearBtns"></div>
+  <div class="table-scroll" id="monthlyContainer"></div>
+</div>
+
+<div class="btn-row">
+  <button class="btn-out" id="next5Btn">&#128197; 次の5年</button>
+  <button class="btn-grn" id="saveBtn">&#128190; 保存する</button>
+</div>
+
+<!-- アドバイスセクション -->
+<div class="advice-section" id="adviceSection" style="display:none">
+  <div class="advice-title">&#129504; あなたへのアドバイス</div>
+  <div id="adviceCards"></div>
 </div>
 
 
+<button class="philo-btn" id="philoBtn">&#10024; 心構え</button>
+<div class="philo-box" id="philoBox" style="display:none">
+  揺れたら立ち止まればいい。<br>
+  弱ったらここに帰ってこい。<br>
+  整えたらまた進めばいい。<br>
+  LIFE Runnerは人生の相棒だ。
+</div>
 
-<script src="app.js"></script>
-</body>
+<div class="sec-head" style="margin-top:8px">
+  <div class="sec-icon" style="background:var(--blue-s)">&#128193;</div>
+  <div><h2>保存済みシミュレーション</h2></div>
+</div>
+<div class="card"><div id="savedList"></div></div>
+```
+
+  </div>
+</div>
+
+<!-- 保存モーダル -->
+
+<div class="modal-overlay" id="saveModal">
+  <div class="modal-box">
+    <h3>&#128190; シミュレーションを保存</h3>
+    <p>このシミュレーションに名前をつけて保存します</p>
+    <input type="text" class="modal-input" id="saveTitle" placeholder="例：現在の条件・転職後シナリオ" maxlength="30">
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeSaveModal()">キャンセル</button>
+      <button class="modal-ok"     onclick="confirmSave()">保存する</button>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-nav" id="bottomNav">
+  <button class="nav-item active" onclick="goBack()">
+    <span class="nav-icon">&#127968;</span>ホーム
+  </button>
+  <button class="nav-item" onclick="document.getElementById('tableContainer').scrollIntoView({behavior:'smooth'})">
+    <span class="nav-icon">&#128203;</span>詳細
+  </button>
+  <button class="nav-item" onclick="saveSim()">
+    <span class="nav-icon">&#128190;</span>保存
+  </button>
+</div>
+
+<script src="script.js"></script>
+
 </html>
